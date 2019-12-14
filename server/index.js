@@ -5,43 +5,77 @@ const port = 3000
 const cors = require('cors')
 
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use('/', express.static(path.join(__dirname, '../public')));
-app.use(express.static('http://localhost:3001/Public'))
 
-app.get('/graph/*', (req, res) => {
-  const url = `http://localhost:3001/graph/getStocks?q=${req.query.id}`
+app.get('/graph/getStocks', (req, res) => {
+  const url = `http://54.153.91.76/graph/getStocks?id=${req.query.id}`
   res.redirect(url)
 })
 
-app.get('/tradestock/*', (req, res) => {
-  const url = `http://localhost:3002/tradestock/${req.params[0]}`
+app.get('/graph/img/:photo', (req, res) => {
+  const url = `http://54.153.91.76/graph/img/${path.basename(req.url)}`
   res.redirect(url)
 })
 
-app.get('/about/*', (req ,res) => {
-  const url = `http://localhost:3003/about/${req.params[0]}`
+app.get('/questionMark.png', (req, res) => {
+  const url = `http://34.214.68.82/questionMark.png`
   res.redirect(url)
+})
+
+app.get('/exclamationMark.png', (req, res) => {
+  const url = `http://34.214.68.82/exclamationMark.png`
+  res.redirect(url)
+})
+app.get('/tradestock/api', (req, res) => {
+  const url = `http://34.214.68.82/tradestock/api/?id=${req.params.id}`
+})
+
+app.get('/tradeStock/img/:photo', (req, res) => {
+  const url = `http://34.214.68.82/img/${path.basename(req.url)}`
+  res.redirect(url)
+})
+
+app.get('/about/getData/:id', (req, res) => {
+  res.redirect(`http://13.52.245.200/about/getData/${req.params.id}`);
 })
 
 app.get('/news/getData', (req ,res) => {
-  const url = `http://localhost:3004/news/getData?id=${req.query.id}`
+  const url = `http://54.193.67.89/news/getData?id=${req.query.id}`
   res.redirect(url)
 })
 
 app.post('/news/addViews', (req, res) => {
-  const url = `http://localhost:3004/news/addViews?id=${req.query.id}`
+  const url = `http://54.193.67.89/news/addViews?id=${req.query.id}`
   res.redirect(url)
 })
 
-app.get('/ratings/*', (req, res) => {
-  const url = `http://localhost:3005/ratings/${req.params[0]}`
+app.get('/ratings/getData', (req, res) => {
+  const url = `http://54.153.72.27/ratings/${path.basename(req.url)}`
   res.redirect(url)
 })
 
-app.get('/earnings/*', (req, res) => {
-  const url = `http://localhost:3006/earnings/getData?id=${req.query.id}`
+app.get('/ratings/img/:photo', (req, res) => {
+  res.redirect(`http://54.153.72.27/ratings/dist/img/${path.basename(req.url)}`)
+})
+
+app.get('/Ratings/:photo', (req, res) => {
+  res.redirect(`http://54.153.72.27/Ratings/${path.basename(req.url)}`)
+})
+
+app.get('/earnings/getData', (req, res) => {
+  const url = `http://54.67.103.66/earnings/getData?id=${req.query.id}`
   res.redirect(url)
 })
+
+app.post('/updateLineColors', (req, res) => {
+  console.log(req.body);
+  // all the routes to update linecolors
+  res.end();
+})
+
+
 app.get('/')
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

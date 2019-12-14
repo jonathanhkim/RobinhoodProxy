@@ -1,29 +1,36 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+
 module.exports = {
-  entry: {
-    vendor: ["styled-components"],
-  },
+  mode: "production",
+  entry: './client/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
+    jsonpFunction: 'jsonpApp1Nav',
   },
-  optimization: {
-    splitChunks: {
-      name: "vendor",
-      minChunks: Infinity
-    }
+  module: {
+    rules: [
+      {
+        test: /\.m?jsx$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            // plugins: ["syntax-class-properties", "transform-class-properties"]
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+    ],
   },
   resolve: {
-    alias: {
-      "styled-components": path.join(__dirname, "node_modules", "styled-components"),
-    }
+    extensions: ['.jsx', '.js'],
   },
-  externals: {
-    "styled-components": {
-      commonjs: "styled-components",
-      commonjs2: "styled-components",
-      amd: "styled-components",
-    },
-  },
-}
+};
