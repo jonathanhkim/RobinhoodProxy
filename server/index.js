@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}))
 app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.get('/graph/getStocks', (req, res) => {
-  const url = `http://54.153.91.76/graph/getStocks?id=${req.query.id}`
+  const url = `http://54.153.91.76/graph/getStocks?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url)
 })
 
@@ -43,12 +43,12 @@ app.get('/about/getData', (req, res) => {
 })
 
 app.get('/news/getData', (req ,res) => {
-  const url = `http://54.193.67.89/news/getData?id=${req.query.id}`
+  const url = `http://54.193.67.89/news/getData?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url)
 })
 
 app.post('/news/addViews', (req, res) => {
-  const url = `http://54.193.67.89/news/addViews?id=${req.query.id}`
+  const url = `http://54.193.67.89/news/addViews?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url)
 })
 
@@ -66,7 +66,7 @@ app.get('/Ratings/:photo', (req, res) => {
 })
 
 app.get('/earnings/getData', (req, res) => {
-  const url = `http://54.67.103.66/earnings/getData?id=${req.query.id}`
+  const url = `http://54.67.103.66/earnings/getData?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url)
 })
 
