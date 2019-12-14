@@ -29,7 +29,8 @@ app.get('/exclamationMark.png', (req, res) => {
   res.redirect(url)
 })
 app.get('/tradestock/api', (req, res) => {
-  const url = `http://34.214.68.82/tradestock/api/?id=${req.params.id}`
+  const url = `http://34.214.68.82/tradeStock/api/?${Object.keys(req.query)[0]}=${req.query.id}`
+  res.redirect(url);
 })
 
 app.get('/tradeStock/img/:photo', (req, res) => {
@@ -37,8 +38,8 @@ app.get('/tradeStock/img/:photo', (req, res) => {
   res.redirect(url)
 })
 
-app.get('/about/getData/:id', (req, res) => {
-  res.redirect(`http://13.52.245.200/about/getData/${req.params.id}`);
+app.get('/about/getData', (req, res) => {
+  res.redirect(`http://13.52.245.200/about/getData/?${Object.keys(req.query)[0]}=${req.query.id}`);
 })
 
 app.get('/news/getData', (req ,res) => {

@@ -71,7 +71,7 @@ function l(){for(var e=0,t=0,n=arguments.length;t<n;t++)e+=arguments[t].length;v
 `,u.Ratings=l.a.div`
 
 `,u.Earnings=l.a.div`
-
+  width: 750px;
 `,u.SecondColumn=l.a.span`
   flex-direction: column;
   padding-top: 90px;

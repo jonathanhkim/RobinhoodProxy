@@ -31,7 +31,7 @@ Wrapper.Ratings = styled.div`
 
 `;
 Wrapper.Earnings = styled.div`
-
+  width: 750px;
 `;
 Wrapper.SecondColumn = styled.span`
   flex-direction: column;
