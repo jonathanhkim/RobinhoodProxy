@@ -24,10 +24,10 @@ class App extends React.Component {
           <Wrapper.FirstColumn>
             <Wrapper.Graph id="Graph"></Wrapper.Graph>
             <Wrapper.About id="About"></Wrapper.About>
+            <Wrapper.ModalRoot id='modal-root'></Wrapper.ModalRoot>
             <Wrapper.News id="News"></Wrapper.News>
             <Wrapper.Ratings id="Ratings"></Wrapper.Ratings>
             <Wrapper.Earnings id="Earnings"></Wrapper.Earnings>
-            <div id='modal-root'></div>
             <Wrapper.TradeStock id="Tradestock"></Wrapper.TradeStock>
           </Wrapper.FirstColumn>
         </Wrapper.Body>

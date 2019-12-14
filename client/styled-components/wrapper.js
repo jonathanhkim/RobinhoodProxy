@@ -33,5 +33,10 @@ Wrapper.TradeStock = styled.div`
 Wrapper.App = styled.div`
   outline: none !important;
 `;
+Wrapper.ModalRoot = styled.div`
+  position: absolute;
+  top: 1000px;
+  left: 400px;
+`;
 
 export default Wrapper;
