@@ -9,6 +9,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/', express.static(path.join(__dirname, '../public')));
 
+app.get('/navbar/img/:photo', (req, res) => {
+  const url = `http://54.219.176.99/navbar/img/${path.basename(req.url)}`
+  res.redirect(url)
+})
+
 app.get('/graph/getStocks', (req, res) => {
   const url = `http://54.153.91.76/graph/getStocks?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url)
@@ -28,6 +33,12 @@ app.get('/exclamationMark.png', (req, res) => {
   const url = `http://34.214.68.82/exclamationMark.png`
   res.redirect(url)
 })
+
+app.get('/exclamation-button.png', (req, res) => {
+  const url = `http://34.214.68.82/exclamation-button.png`
+  res.redirect(url)
+})
+
 app.get('/tradestock/api', (req, res) => {
   const url = `http://34.214.68.82/tradeStock/api/?${Object.keys(req.query)[0]}=${req.query.id}`
   res.redirect(url);
@@ -71,7 +82,6 @@ app.get('/earnings/getData', (req, res) => {
 })
 
 app.post('/updateLineColors', (req, res) => {
-  console.log(req.body);
   // all the routes to update linecolors
   res.end();
 })

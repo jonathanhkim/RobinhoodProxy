@@ -28,10 +28,8 @@ class App extends React.Component {
             <Wrapper.Ratings id="Ratings"></Wrapper.Ratings>
             <Wrapper.Earnings id="Earnings"></Wrapper.Earnings>
             <div id='modal-root'></div>
-          </Wrapper.FirstColumn>
-          <Wrapper.SecondColumn id="secondColumn">
             <Wrapper.TradeStock id="Tradestock"></Wrapper.TradeStock>
-          </Wrapper.SecondColumn>
+          </Wrapper.FirstColumn>
         </Wrapper.Body>
       </Wrapper.Global>
     )
